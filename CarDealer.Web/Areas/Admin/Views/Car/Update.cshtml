@@ -1,0 +1,102 @@
+﻿@model CarUpdateDto
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+	<h4 class="fw-bold py-3 mb-4">
+		<span class="text-muted fw-light">Car Manager</span> Add Car
+	</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card mb-4">
+				<h5 class="card-header"></h5>
+				<form asp-controller="Car" asp-action="Update" method="post" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly"></div>
+					<div class="card-body">
+						<input type="hidden" asp-for="Id" />
+						<input type="hidden" asp-for="CurrentImageUrl" />
+						<div class="form-group">
+							<label asp-for="CategoryId">Category</label>
+							<select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">Select Category</select>
+							<span asp-validation-for="CategoryId" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<label asp-for="Brand" class="form-label">Car Brand</label>
+							<select asp-for="Brand" class="form-control mb-2" id="carSelect" aria-describedby="carSelectHelp" onchange="updateModels()">
+								<option value="" selected disabled>Brand Name</option>
+								<option value="bmw">BMW</option>
+								<option value="mercedes">Mercedes</option>
+								<option value="audi">Audi</option>
+								<option value="landrover">Land Rover</option>
+								<option value="volkswagen">Volkswagen</option>
+								<option value="volvo">Volvo</option>
+							</select>
+							<span asp-validation-for="Brand" class="text-danger"></span>
+						</div>
+
+						<div>
+							<label asp-for="Model" class="form-label">Car Model</label>
+							<select asp-for="Model" class="form-control mb-2" id="carModelSelect" aria-describedby="carModelHelp">
+								<option value="" selected disabled>Model Name</option>
+							</select>
+							<span asp-validation-for="Model" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<label asp-for="Year" class="form-label">Year</label>
+							<input asp-for="Year" type="text" class="form-control mb-2" placeholder="Year" aria-describedby="defaultFormControlHelp" />
+							<span asp-validation-for="Year" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<label asp-for="Price" class="form-label">Price</label>
+							<input asp-for="Price" type="text" class="form-control mb-2" placeholder="Price" aria-describedby="defaultFormControlHelp" />
+							<span asp-validation-for="Price" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<label asp-for="Kilometer" class="form-label">Kilometer</label>
+							<input asp-for="Kilometer" type="text" class="form-control mb-2" placeholder="Kilometer" aria-describedby="KilometerHelp" />
+							<span asp-validation-for="Kilometer" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<label asp-for="Color" class="form-label">Color</label>
+							<select asp-for="Color" class="form-control mb-2" id="colorSelect" aria-describedby="carSelectHelp">
+								<option value="" selected disabled>Colors</option>
+								<option value="black">Black</option>
+								<option value="blue">Blue</option>
+								<option value="gray">Gray</option>
+								<option value="green">Green</option>
+								<option value="orange">Orange</option>
+								<option value="red">Red</option>
+								<option value="white">White</option>
+								<option value="yellow">Yellow</option>
+							</select>
+							<span asp-validation-for="Color" class="text-danger"></span>
+						</div>						
+
+						<div class="form-group">
+							<label asp-for="Image" class="form-label">Upload New Image (Optional)</label>
+							<input asp-for="Image" type="file" class="form-control" />
+							<span asp-validation-for="Image" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block">Save</button>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+	<script src="~/js/caradd.js" type="application/ecmascript"></script>
+}

@@ -1,0 +1,240 @@
+﻿@model CarListDto
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <section id="home" class="welcome-hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="model-search-content">
+						<div class="row">
+                            <form id="searchForm" method="get" action="/Home/Search">
+
+                                <div class="col-md-offset-1 col-md-2 col-sm-12">
+                                    <div class="single-model-search">
+                                        <h2>Select Year</h2>
+                                        <div class="model-select-icon">
+                                            <select name="year" class="form-control">
+                                                <option value="">All</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2010">2010</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="single-model-search">
+                                        <h2>Category</h2>
+                                        <div class="model-select-icon">
+                                            <select name="category" class="form-control">
+                                                <option value="">All</option>
+                                                <option value="otomobil">Otomobil</option>
+                                                <option value="arazi">Arazi Suv</option>
+                                                <option value="motor">Motor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-offset-1 col-md-2 col-sm-12">
+                                    <div class="single-model-search">
+                                        <h2>Select Brand</h2>
+                                        <div class="model-select-icon">
+                                            <select name="brand" class="form-control">
+                                                <option value="">All</option>
+                                                <option value="mercedes">Mercedes-Benz</option>
+                                                <option value="Audi">Audi</option>
+                                                <option value="BMW">BMW</option>
+                                                <option value="landrover">Land Rover</option>
+                                                <option value="volkswagen">Volkswagen</option>
+                                                <option value="volvo">Volvo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="single-model-search">
+                                        <h2>Car Color</h2>
+                                        <div class="model-select-icon">
+                                            <select name="color" class="form-control">
+                                                <option value="">All</option>
+                                                <option value="Black">Black</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Gray">Gray</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-12">
+                                    <div class="single-model-search text-center">
+                                        <button type="submit" class="welcome-btn model-search-btn">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!--featured-cars start -->
+	<section id="featured-cars" class="featured-cars">
+        <div class="container">
+            <div class="section-header">
+                <p>checkout <span>the</span> featured cars</p>
+                <h2>featured cars (<span>@Model.TotalCars</span>)</h2>
+            </div>
+
+            <div class="featured-cars-content">
+                <div class="row">
+                    @foreach (var car in Model.Cars)
+                    {
+                        <div class="col">
+                            <div class="single-featured-cars d-flex">
+                                <div class="featured-img-box">
+                                    <img src="@car.ImageUrl" alt="car image" class="featured-cars-img" />
+                                </div>
+                                <div class="featured-info-box">
+                                    <div class="featured-model-info">
+                                        <p>
+                                            model: @car.Year
+                                            <span class="featured-mi-span"> @car.Kilometer km</span>
+                                            <span class="featured-hp-span"> @car.Color</span>
+                                            automatic
+                                        </p>
+                                    </div>
+                                    <div class="featured-cars-txt">
+                                        <h2><a href="#">@car.Brand @car.Model</a></h2>
+                                        <h3>₺@car.Price</h3>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="pagination">
+                @if (Model.TotalPages > 1)
+                {
+                    <ul class="pagination-list">
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                <a href="?pageNumber=@i">@i</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- featured-cars end -->
+</div>
+
+	<!--featured-cars end -->
+	<!--brand strat -->
+	<section id="brand" class="brand">
+		<div class="container">
+			<div class="brand-area">
+				<div class="owl-carousel owl-theme brand-item">
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br1.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br2.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br3.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br4.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br5.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+
+					<div class="item">
+						<a href="#">
+							<img src="~/carvilla/assets/images/brand/br6.png" alt="brand-image" />
+						</a>
+					</div><!--/.item-->
+				</div><!--/.owl-carousel-->
+			</div><!--/.clients-area-->
+
+		</div><!--/.container-->
+
+	</section><!--/brand-->
+
+</div>
+
+
+@* @foreach (var car in Model)
+{
+    <h1>@car.Brand</h1>
+    //<h2>@car.CategoryId</h2>
+    <h3>@car.Model</h3>
+    <h4>@car.Price</h4>
+    <h5>@car.CreatedDate</h5>
+} *@
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('searchForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Varsayılan form gönderimini engelle
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            const formData = new FormData(form);
+            const queryString = new URLSearchParams(formData).toString();
+
+            fetch('/Home/Search?' + queryString, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/html'
+                }
+            })
+                .then(response => response.text())
+                .then(html => {
+                    // Sayfa içeriğini güncelle
+                    document.querySelector('body').innerHTML = html;
+
+                    // Sayfanın eski konumunu geri yükle
+                    window.scrollTo(0, scrollTop);
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+
+</script>
