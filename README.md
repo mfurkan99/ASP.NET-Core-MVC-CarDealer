@@ -1,5 +1,5 @@
 # .NET CORE MVC Car Dealer Project
-Bu proje kapsamında, C# ile OOP prensiplerini kullanarak bir Seyehat Rezervasyon Sistemi yapılmıştır.
+Bu proje kapsamında, .NET CORE MVC ile bir araç satış sayfası yapılmıştır.
 
 # Teknolojiler: .NET Core MVC, Entity Framework Core, MSSQL
 
