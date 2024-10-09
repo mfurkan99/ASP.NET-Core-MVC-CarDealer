@@ -18,12 +18,6 @@ Bu proje kapsamında, .NET CORE MVC ile bir araç satış sayfası yapılmışt�
 - Araç listelerine göz atarken kullanıcı deneyimini geliştirmek için sayfalama uygulandı.
 - Kullanıcıların araçları renk, marka ve yıl gibi niteliklere göre listelemesine olanak tanıyan filtreleme seçenekleri geliştirildi.
 
-## Nasıl Çalıştırılır
-1. Projeyi klonlayın: `git clone <repository-url>`
-2. Visual Studio'da projeyi açın.
-3. Gerekli bağımlılıkları yüklemek için `dotnet restore` komutunu çalıştırın.
-4. `appsettings.json` dosyasındaki veritabanı bağlantı ayarlarını güncelleyin.
-5. Projeyi başlatın: `dotnet run`
 
 # Anasayfa
 ![image](https://github.com/user-attachments/assets/e5ff1e40-300c-4ec9-a4e8-ddb0f0fdcedf)
